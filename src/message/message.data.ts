@@ -360,6 +360,13 @@ export class MessageData {
       );
     }
 
-    return chatMessageToObject(updatedResult);
+    return chatMessageToObject(updatedResult)
+  }
+
+  async updateChatMessageTags(
+    chatMessageId: ObjectID,
+    tags: string[],
+  ): Promise<ChatMessage> {
+      return this.updateChatMessageTags(chatMessageId, tags);
   }
 }

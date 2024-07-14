@@ -675,6 +675,20 @@ export class MessageLogic implements IMessageLogic {
     );
   }
 
+  async updateChatMessageTags(
+    chatMessageId: ObjectID,
+    tags: string[],
+    authenticatedUser: IAuthenticatedUser,
+  ): Promise<ChatMessage> {
+    await this.throwForbiddenErrorIfNotAuthorized(
+      authenticatedUser,
+      chatMessageId,
+      Action.sendMessage,
+    );
+
+    return await this.messageData.updateChatMessageTags(chatMessageId, tags);
+  }
+
   private validateOption(
     message: ChatMessageModel,
     option: string,

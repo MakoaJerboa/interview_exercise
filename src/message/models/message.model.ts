@@ -154,6 +154,12 @@ export class ChatMessageModel {
   })
   reactions?: Reaction[];
 
+  @Prop({
+    type: [{ tags: [String], userIds: [String]}],
+    nullable: true,
+  })
+  tags?: Array<{ tags: string[], userIds: string }>;
+
   /**
    * All the properties below are virtual properties
    * @url https://mongoosejs.com/docs/tutorials/virtuals.html
